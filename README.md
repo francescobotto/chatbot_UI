@@ -62,6 +62,6 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
    ```bash
    npm run dev
    ```
-   The frontend will run at: `http://localhost:3000`
+   The frontend will run at: `http://localhost:3175`
 
 ---
