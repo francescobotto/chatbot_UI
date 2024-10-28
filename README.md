@@ -35,7 +35,7 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
 3. **Install Required Dependencies**:
 
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirement.txt
    ```
 
    Alternatively, you can manually install the necessary packages:
@@ -46,13 +46,14 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
 
 4. **Start the FastAPI Server**:
    ```bash
-   uvicorn main:app --reload
+   uvicorn app.main:app --reload
    ```
    The server will run at: `http://127.0.0.1:8000`
 
 ### **Client Setup (React)**
 
 1. **Install Required Packages**:
+   Navigate to Client
 
    ```bash
    npm install
