@@ -21,7 +21,7 @@ const Chat = () => {
     setMessages(newMessages);
 
     // To work in render
-    const backendUrl = "https://your-backend-url.onrender.com"; // Use your Render backend URL
+    const backendUrl = "https://chatbotbackend-aqoc.onrender.com"; // Use your Render backend URL
 
     const url =
       mode === "nlp" ? `${backendUrl}/nlp-query` : `${backendUrl}/rag-query`;
