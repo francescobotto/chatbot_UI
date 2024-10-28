@@ -1,10 +1,11 @@
-
 # Chatbot UI Project
 
 ## Project Overview
+
 This project sets up a **FastAPI backend** and a **React frontend** to create a chatbot interface. Follow the instructions below to get your development environment running smoothly.
 
 ## Prerequisites
+
 - **Python 3.7+**
 - **Node.js and npm**
 
@@ -13,12 +14,15 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
 ## Getting Started
 
 ### **Server Setup (FastAPI)**
+
 1. **Create a Virtual Environment**:
+
    ```bash
    python3 -m venv venv
    ```
 
 2. **Activate the Virtual Environment**:
+
    - **macOS/Linux**:
      ```bash
      source venv/bin/activate
@@ -29,10 +33,13 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
      ```
 
 3. **Install Required Dependencies**:
+
    ```bash
    pip install -r requirements.txt
    ```
+
    Alternatively, you can manually install the necessary packages:
+
    ```bash
    pip install fastapi uvicorn pydantic sqlalchemy
    ```
@@ -44,7 +51,9 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
    The server will run at: `http://127.0.0.1:8000`
 
 ### **Client Setup (React)**
+
 1. **Install Required Packages**:
+
    ```bash
    npm install
    ```
@@ -56,11 +65,3 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
    The frontend will run at: `http://localhost:3000`
 
 ---
-
-## Project Structure
-```
-/chatbot-ui
-├── /backend       # FastAPI backend folder
-│   ├── main.py    # FastAPI entry point
-│   └── ...
-```
