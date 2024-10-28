@@ -20,10 +20,19 @@ const Chat = () => {
     const newMessages = [...messages, { type: "user", text: question }];
     setMessages(newMessages);
 
+    // To work in render
+    const backendUrl = "https://your-backend-url.onrender.com"; // Use your Render backend URL
+
+    const url =
+      mode === "nlp" ? `${backendUrl}/nlp-query` : `${backendUrl}/rag-query`;
+
+    // To work in local
+    /*
     const url =
       mode === "nlp"
         ? "http://127.0.0.1:8000/nlp-query"
         : "http://127.0.0.1:8000/rag-query";
+    */
 
     try {
       const res = await axios.post(url, { question });
