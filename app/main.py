@@ -17,6 +17,10 @@ app.add_middleware(
 # Include the API router
 app.include_router(endpoints.router)
 
+@app.get("/")
+def read_root():
+    return {"message": "Backend is running"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
