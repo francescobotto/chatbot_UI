@@ -4,6 +4,7 @@ node_modules/
 
 # Python virtual environment
 venv/
+.venv/
 
 # Python-related files
 __pycache__/
@@ -30,3 +31,5 @@ __pycache__/
 # Build directories
 dist/
 build/
+
+test.http
