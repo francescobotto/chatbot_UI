@@ -10,12 +10,12 @@ router = APIRouter()
 async def nlp_query(request: QueryRequest):
     try:
         sql_query = nlp.generate_sql_query(request.question)
-        return QueryResponse(sql_query=sql_query)
+        return QueryResponse(response=sql_query)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# RAG Query API
+# RAG Query APIr
 @router.post("/rag-query", response_model=QueryResponse)
 async def rag_query(request: QueryRequest):
     try:

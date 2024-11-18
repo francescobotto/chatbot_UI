@@ -23,27 +23,32 @@ const Chat = () => {
     // To work in render
     const backendUrl = "https://chatbotbackend-aqoc.onrender.com"; // Use your Render backend URL
 
-    const url =
-      mode === "nlp" ? `${backendUrl}/nlp-query` : `${backendUrl}/rag-query`;
+    // const url =
+    //   mode === "nlp" ? `${backendUrl}/nlp-query` : `${backendUrl}/rag-query`;
 
     // To work in local
-    /*
+
     const url =
       mode === "nlp"
         ? "http://127.0.0.1:8000/nlp-query"
         : "http://127.0.0.1:8000/rag-query";
-    */
+
 
     try {
-      const res = await axios.post(url, { question });
+      const res = await axios.post(url, { "question": question }, {
+        headers: {
+          "Content-Type": "application/json",
+        }
+      });
+      console.log(res);
       setMessages((prev) => [
         ...newMessages,
-        { type: "bot", text: res.data.sql_query || res.data.response },
+        { type: "bot", text: res.data.response },
       ]);
     } catch (error) {
       setMessages((prev) => [
         ...newMessages,
-        { type: "bot", text: "Error fetching response from the server" },
+        { type: "bot", text: "Sorry, I couldn't understand that." },
       ]);
     }
 
