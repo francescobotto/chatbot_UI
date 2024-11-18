@@ -47,6 +47,7 @@ def generate_rag_response(question: str) -> str:
     context = ""
     for doc in docs:
         context += 'Name' + doc[0].metadata['name'] + '\n' +  doc[0].page_content
+
     response = chain.invoke({"question": question, "context": context})
     return response.content
   
