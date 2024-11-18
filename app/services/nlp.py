@@ -33,7 +33,6 @@ def generate_sql_query(question: str) -> str:
                 "create_table_statements": "CREATE TABLE machines (speed_production INTEGER, main_market TEXT, caps_appications TEXT, closure_head TEXT);"})
 
     query = response.content
-    print(query)
     conn = sqlite3.connect('./db.db')
     c = conn.cursor()
     answer = ""
