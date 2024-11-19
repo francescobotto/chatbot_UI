@@ -23,14 +23,44 @@ def generate_sql_query(question: str) -> str:
 
     model = prompt | llm
 
-    response = model.invoke({"user_question": question,
-                "instructions": "- if the question cannot be answered given the database schema, return 'I do not know' "
-                                "\n- recall that the current date in YYYY-MM-DD format is 2024-09-29"
-                                "act as an expert in the field of computer science"
-                                "the main_market column is a list of the main markets for the machine, the prossible values are: 'BEVERAGE', 'FOOD', 'CHEMICAL', 'PHARMACEUTICAL', 'HOME CARE', 'BEER', 'SPIRITS', 'WINE&SPIRITS' and must queried with the LIKE operator"
-                                ""
-                                ,
-                "create_table_statements": "CREATE TABLE machines (speed_production INTEGER, main_market TEXT, caps_appications TEXT, closure_head TEXT);"})
+    response = model.invoke({
+        "user_question": question,
+        "instructions": (
+            "- if the question cannot be answered given the database schema, return 'I do not know' "
+            "\n- recall that the current date in YYYY-MM-DD format is 2024-09-29"
+            "act as an expert in the field of computer science"
+            "the main_market column is a list of the main markets for the machine, the possible values are: "
+            "'BEVERAGE', 'FOOD', 'CHEMICAL', 'PHARMACEUTICAL', 'HOME CARE', 'BEER', 'SPIRITS', 'WINE&SPIRITS' "
+            "and must be queried with the LIKE operator"
+        ),
+        "create_table_statements": (
+            "CREATE TABLE machines ("
+            "id SERIAL PRIMARY KEY, "
+            "speed_production NUMERIC, "
+            "main_market TEXT, "
+            "caps_application TEXT, "
+            "closure_heads TEXT"
+            ");"
+            "CREATE TABLE versions ("
+            "id SERIAL PRIMARY KEY, "
+            "name TEXT NOT NULL, "
+            "description TEXT, "
+            "machine_id INT, "
+            "CONSTRAINT fk_machine "
+            "FOREIGN KEY (machine_id) "
+            "REFERENCES machines (id)"
+            ");"
+            "CREATE TABLE options ("
+            "id SERIAL PRIMARY KEY, "
+            "name TEXT NOT NULL, "
+            "description TEXT, "
+            "machine_id INT, "
+            "CONSTRAINT fk_machine "
+            "FOREIGN KEY (machine_id) "
+            "REFERENCES machines (id)"
+            ");"
+        )
+    })
 
     query = response.content
     

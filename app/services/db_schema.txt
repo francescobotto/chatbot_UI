@@ -1,0 +1,27 @@
+CREATE TABLE machines ( 
+	id SERIAL PRIMARY KEY, 
+	speed_production NUMERIC,
+	main_market TEXT, 
+	caps_application TEXT,
+	closure_heads TEXT
+);
+
+CREATE TABLE versions (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    machine_id INT,
+    CONSTRAINT fk_machine
+        FOREIGN KEY (machine_id)
+        REFERENCES machines (id)
+);
+
+CREATE TABLE options (
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    description TEXT,
+    machine_id INT,
+    CONSTRAINT fk_machine
+        FOREIGN KEY (machine_id)
+        REFERENCES machines (id)
+);
