@@ -8,9 +8,9 @@ from langchain_groq import ChatGroq
 
 def generate_sql_query(question: str) -> str:
 
-    load_dotenv()
+    # load_dotenv()
 
-    os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+    # os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
     llm = ChatGroq(model="llama3-groq-70b-8192-tool-use-preview", temperature=0)
     prompt = ChatPromptTemplate.from_template(

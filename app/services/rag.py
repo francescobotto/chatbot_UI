@@ -10,9 +10,9 @@ persist_directory = "./chroma/machines"
 
 embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
-load_dotenv()
+# oad_dotenv()
 
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+# os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 model = ChatGroq(
     model="llama3-groq-70b-8192-tool-use-preview",
