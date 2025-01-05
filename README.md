@@ -35,7 +35,7 @@ This project sets up a **FastAPI backend** and a **React frontend** to create a 
 3. **Install Required Dependencies**:
 
    ```bash
-   pip install -r requirement.txt
+   pip install -r requirements.txt
    ```
 
    Alternatively, you can manually install the necessary packages:

@@ -1,13 +1,13 @@
-import os
+# import os
 import sqlite3
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
 
-load_dotenv()
-
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+# load_dotenv()
+#
+# os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
 

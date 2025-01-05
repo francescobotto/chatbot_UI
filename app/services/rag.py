@@ -1,6 +1,6 @@
-import os
+# import os
 
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
@@ -10,9 +10,9 @@ persist_directory = "./chroma/machines"
 
 embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
-load_dotenv()
-
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+# load_dotenv()
+#
+# os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 model = ChatGroq(
     model="llama3-groq-70b-8192-tool-use-preview",
@@ -41,17 +41,13 @@ def get_embedded_database():
     return db
 
 def generate_rag_response(question: str) -> str:
-    try:
-        chain = get_chain()
-        db = get_embedded_database()
-        docs = db.similarity_search_with_score(question, k=5)
-        context = ""
-        for doc in docs:
-            print(doc[0].metadata['name'])
-            context += 'Name' + doc[0].metadata['name'] + '\n' +  doc[0].page_content
+    chain = get_chain()
+    db = get_embedded_database()
+    docs = db.similarity_search_with_score(question, k=5)
+    context = ""
+    for doc in docs:
+        context += 'Name' + doc[0].metadata['name'] + '\n' +  doc[0].page_content
 
-        response = chain.invoke({"question": question, "context": context})
-        return response.content
-    except Exception as e:
-        return str(e)
+    response = chain.invoke({"question": question, "context": context})
+    return response.content
   
