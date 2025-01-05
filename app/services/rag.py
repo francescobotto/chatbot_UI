@@ -41,13 +41,17 @@ def get_embedded_database():
     return db
 
 def generate_rag_response(question: str) -> str:
-    chain = get_chain()
-    db = get_embedded_database()
-    docs = db.similarity_search_with_score(question, k=5)
-    context = ""
-    for doc in docs:
-        context += 'Name' + doc[0].metadata['name'] + '\n' +  doc[0].page_content
+    try:
+        chain = get_chain()
+        db = get_embedded_database()
+        docs = db.similarity_search_with_score(question, k=5)
+        context = ""
+        for doc in docs:
+            print(doc[0].metadata['name'])
+            context += 'Name' + doc[0].metadata['name'] + '\n' +  doc[0].page_content
 
-    response = chain.invoke({"question": question, "context": context})
-    return response.content
+        response = chain.invoke({"question": question, "context": context})
+        return response.content
+    except Exception as e:
+        return str(e)
   
