@@ -4,18 +4,18 @@
 from langchain_chroma import Chroma
 from langchain_core.prompts import PromptTemplate
 from langchain_groq import ChatGroq
-from langchain_ollama import OllamaEmbeddings
+from langchain_huggingface.embeddings.huggingface import HuggingFaceEmbeddings
 
 persist_directory = "./chroma/machines"
 
-embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
 # load_dotenv()
 #
 # os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 model = ChatGroq(
-    model="llama3-groq-70b-8192-tool-use-preview",
+    model="llama-3.3-70b-versatile",
     temperature=0,
     max_retries=2,
 )
